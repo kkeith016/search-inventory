@@ -14,7 +14,7 @@ public class main {
     int choice;
 
     // --- Load inventory from CSV directly ---
-        try (FileReader inventoryReader = new FileReader("inventory.csv");
+        try (FileReader inventoryReader = new FileReader("src/main/resources/inventory.csv");
     BufferedReader inventoryScanner = new BufferedReader(inventoryReader)) {
 
         String line;
