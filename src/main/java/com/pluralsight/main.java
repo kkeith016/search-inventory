@@ -35,13 +35,13 @@ public class main {
         System.out.println("--- Welcome to the Store Inventory System ---\n");
 
         do {
-        System.out.println("What do you want to do?");
-        System.out.println("1 - List all products");
-        System.out.println("2 - Lookup a product by its id");
-        System.out.println("3 - Find all products within a price range");
-        System.out.println("4 - Add a new product");
-        System.out.println("5 - Quit the application");
-        System.out.print("Enter command: ");
+            System.out.println("\n========= Store Inventory Menu =========");
+            System.out.println("1 - List all products");
+            System.out.println("2 - Lookup a product by its id");
+            System.out.println("3 - Find all products within a price range");
+            System.out.println("4 - Add a new product");
+            System.out.println("5 - Quit the application");
+            System.out.print("Enter command: ");
 
         while (!scanner.hasNextInt()) {
             System.out.print("Please enter a number 1-5: ");
@@ -93,7 +93,7 @@ public static void lookupProductById(ArrayList<Product> inventory, Scanner scann
     boolean found = false;
     for (Product item : inventory) {
         if (item.getId() == id) {
-            System.out.println("Found: " + item);
+            System.out.print("\nFound: " + item + "\n");
             found = true;
             break;
         }
