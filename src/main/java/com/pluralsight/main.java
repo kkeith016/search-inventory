@@ -31,7 +31,7 @@ public class main {
     } catch (IOException e) {
         System.out.println("Error reading inventory file: " + e.getMessage());
     }
-
+        //Menu and formating.
         System.out.println("--- Welcome to the Store Inventory System ---\n");
 
         do {
@@ -52,12 +52,22 @@ public class main {
         scanner.nextLine(); // consume newline
 
         switch (choice) {
-            case 1 -> listProducts(inventory);
-            case 2 -> lookupProductById(inventory, scanner);
-            case 3 -> findProductsByPriceRange(inventory, scanner);
-            case 4 -> addNewProduct(inventory, scanner);
-            case 5 -> System.out.println("Exiting program...");
-            default -> System.out.println("Invalid choice. Try again.");
+            case 1:
+                listProducts(inventory);
+                break;
+            case 2:
+                lookupProductById(inventory, scanner);
+                break;
+            case 3:
+                findProductsByPriceRange(inventory, scanner);
+                break;
+            case 4:
+                addNewProduct(inventory, scanner);
+                break;
+            case 5:
+                System.out.println("Exiting program...");
+            default:
+                System.out.println("Invalid choice. Try again.");
         }
 
     } while (choice != 5);
@@ -101,9 +111,9 @@ public static void findProductsByPriceRange(ArrayList<Product> inventory, Scanne
 
     System.out.println("\nProducts in price range:");
     boolean found = false;
-    for (Product p : inventory) {
-        if (p.getPrice() >= min && p.getPrice() <= max) {
-            System.out.println(p);
+    for (Product item : inventory) {
+        if (item.getPrice() >= min && item.getPrice() <= max) {
+            System.out.println(item);
             found = true;
         }
     }
