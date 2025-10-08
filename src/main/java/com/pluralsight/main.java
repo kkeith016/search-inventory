@@ -1,25 +1,32 @@
 package com.pluralsight;
 
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Scanner;
 
 public class main {
-    public static void main(String[] args) {
-        ArrayList<Product> inventory = getInventory();
-        Scanner scanner = new Scanner(System.in);
-        int choice;
+    public static ArrayList<Product> main(String[] args) {
+        ArrayList<Product> inventory = new ArrayList<>();
 
-        System.out.println("--- Welcome to the Store Inventory System ---\n");
+        try (FileReader inventoryReader = new FileReader("inventory.csv");
+             BufferedReader bufReader = new BufferedReader(inventoryReader)) {
 
-        System.out.println("We carry the following inventory: ");
-        for (int i = 0; i < inventory.size(); i++) {
-            Product p = inventory.get(i);
-            System.out.printf("id: %d %s - Price: $%.2f",
-                    p.getId(), p.getName(), p.getPrice());
+            String line;
+            while ((line = bufReader.readLine()) != null) {
+                String[] parts = line.split("\\|");
+                if (parts.length == 3) {
+                    int id = Integer.parseInt(parts[0].trim());
+                    String name = parts[1].trim();
+                    double price = Double.parseDouble(parts[2].trim());
+                    inventory.add(new Product(id, name, price));
+                }
+            }
+
+        } catch (IOException e) {
+            System.out.println("Error reading inventory file: " + e.getMessage());
         }
-    }
-    public ArrayList<Product> getInventory() {
-        ArrayList<Product> inventory = new ArrayList<Product>();
+
         return inventory;
     }
-}
+    }
