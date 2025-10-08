@@ -78,8 +78,8 @@ public class main {
 // --- List all products ---
 public static void listProducts(ArrayList<Product> inventory) {
     System.out.println("\n--- Store Inventory ---");
-    for (Product p : inventory) {
-        System.out.println(p);
+    for (Product item : inventory) {
+        System.out.println(item);
     }
     System.out.println();
 }
@@ -91,9 +91,9 @@ public static void lookupProductById(ArrayList<Product> inventory, Scanner scann
     scanner.nextLine();
 
     boolean found = false;
-    for (Product p : inventory) {
-        if (p.getId() == id) {
-            System.out.println("Found: " + p);
+    for (Product item : inventory) {
+        if (item.getId() == id) {
+            System.out.println("Found: " + item);
             found = true;
             break;
         }
