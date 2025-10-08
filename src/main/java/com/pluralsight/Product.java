@@ -11,27 +11,13 @@ public class Product {
         this.price = price;
     }
 
-    public int getId() {
-        return id;
-    }
+    // Getters
+    public int getId() { return id; }
+    public String getName() { return name; }
+    public double getPrice() { return price; }
 
-    public void setId(int id) {
-        this.id = id;
+    // toString for easy display
+    public String toString() {
+        return String.format("id: %d | %s | $%.2f", id, name, price);
     }
-
-    public String getName() {
-        return name;
     }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public double getPrice() {
-        return price;
-    }
-
-    public void setPrice(double price) {
-        this.price = price;
-    }
-}
